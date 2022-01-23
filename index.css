@@ -128,7 +128,6 @@ select {
 .flex {
     display: flex;
     gap: var(--gap, 1rem);
-    justify-content: center;
 }
 
 .flex.even-columns > * {
@@ -285,11 +284,28 @@ select {
 }
 
 .primary-navigation {
-    --gap: 8rem;
-    --underline-gap: 2rem;
+    --underline-gap: rem;
     list-style: none;
     padding: 0;
     margin: 0;
+}
+
+@media (max-width: 35rem) {
+    .primary-navigation {
+        --underline-gap: .5em;
+        position: fixed;
+        z-index: 1000;
+        inset: 0 0 0 40%;
+        background: black;
+        list-style: none;
+        padding: min(20rem, 15vh) 2rem;
+        margin: 0;
+        flex-direction: column;
+    }
+
+    .primary-navigation.underline-indicators > .active {
+        border: 0;
+    }
 }
 
 .primary-navigation a {
@@ -391,8 +407,6 @@ select {
 
 @media (min-width: 45rem) {
     .home {
-        background-size: cover;
-        background-position: bottom center;
         background-image: url(./assets/home/background-home-desktop.jpg);
     }
 }
